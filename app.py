@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 try:
     import matplotlib.pyplot as plt
     matplotlib_available = True
-except ModuleNotFoundError:
+except ImportError:
     matplotlib_available = False
 
 # Load the diabetes dataset
@@ -61,7 +61,7 @@ else:
 # Display model accuracy
 st.header('Model Accuracy:')
 accuracy = accuracy_score(y_test, rf.predict(x_test))
-st.write(f'{accuracy * 100:.2f}%')
+st.write(f'Model Accuracy: {accuracy * 100:.2f}%')
 
 # Optional: Display additional information or recommendations based on prediction result
 if prediction[0] == 1:
