@@ -1,25 +1,17 @@
+import subprocess
+
+# Install required packages using pip
+subprocess.call(['pip', 'install', '-r', 'requirements.txt'])
+
+# Import required libraries after installation
 import streamlit as st
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# Attempt to import scikit-learn and RandomForestClassifier
-try:
-    from sklearn.ensemble import RandomForestClassifier
-    from sklearn.model_selection import train_test_split
-    from sklearn.metrics import accuracy_score
-    sklearn_available = True
-except ImportError:
-    sklearn_available = False
+# Your Streamlit app code goes here...
 
-# Check if Matplotlib is available
-try:
-    import matplotlib.pyplot as plt
-    matplotlib_available = True
-except ImportError:
-    matplotlib_available = False
-
-if not sklearn_available:
-    st.error("scikit-learn is not available. Please make sure it is installed in your environment.")
-    st.stop()
 
 # Load the diabetes dataset
 df = pd.read_csv('diabetes.csv')
